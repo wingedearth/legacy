@@ -1,10 +1,10 @@
 var MyButton = React.createClass({
   getInitialState: function() {
-    return {coloring: white};
+    return {coloring: "white"};
   },
 
   clicked: function() {
-    this.props.clickHandler
+    this.props.clickHandler();
   },
 
 // Maybe add color changing buttons later. - Icebox
@@ -36,17 +36,36 @@ var MyButton = React.createClass({
 var MyComponent = React.createClass({
 
   getInitialState: function() {
-    return {showText: true};
+    return {
+      showText: true,
+      colors: ["white", "red", "blue"]
+    };
   },
 
   handleButtonClick: function() {
-    // TODO
+    console.log("clicked!");
+    if (this.state.showText==true) {
+      this.setState({showText: false});
+    } else {
+      this.setState({showText: true});
+    }
+  },
+
+  renderText: function() {
+    if (this.state.showText==true) {
+      return (<span>{this.props.text}</span>);
+    } else {
+      return (<span></span>);
+    }
   },
 
   render: function() {
     return(
       <div className='container'>
-        <span>{this.props.text}</span>
+        <MyButton clickHandler={this.handleButtonClick}>
+        </MyButton>
+
+        <p>{this.renderText()}</p>
       </div>
     );
   }
