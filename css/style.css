@@ -1,3 +1,14 @@
 body {
   background-color: dodgerblue;
 }
+
+button {
+  /*TODO: change style when media < 600px*/
+}
+
+#content {
+  text-align: center;
+  color: white;
+  margin-top: 50px;
+  font-size: 23px;
+}
