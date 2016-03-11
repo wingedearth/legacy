@@ -2,8 +2,24 @@ body {
   background-color: dodgerblue;
 }
 
-button {
-  /*TODO: change style when media < 600px*/
+/*Make your CSS responsive so the style of the button changes when
+the screen is less than 600px.*/
+@media only screen and (max-width: 500px) {
+  button.btn {
+    background-color: black;
+  }
+}
+
+p.redtext {
+  color: red;
+}
+
+p.whitetext {
+  color: white;
+}
+
+p.bluetext {
+  color: blue;
 }
 
 #content {
