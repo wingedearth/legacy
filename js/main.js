@@ -1,35 +1,58 @@
-var MyButton = React.createClass({
-  getInitialState: function() {
-    return {coloring: "white"};
+var ColorButton = React.createClass({
+  red: function() {
+    {this.props.redClick()};
   },
+
+  green: function() {
+    {this.props.greenClick()};
+  },
+
+  white: function() {
+    {this.props.whiteClick()};
+  },
+
+  makeButton: function() {
+    if (this.props.children=="white") {
+      return (
+        <button onClick={this.white}
+          className="white btn-floating waves-effect waves-light">
+        </button>
+      );
+    } else if (this.props.children=="red") {
+      return (
+        <button onClick={this.red}
+          className="red btn-floating waves-effect waves-light">
+        </button>
+      );
+    } else if (this.props.children=="green") {
+      return (
+        <button onClick={this.green}
+          className="green btn-floating waves-effect waves-light">
+        </button>
+      );
+    }
+  },
+
+  render: function() {
+    return(<div>{this.makeButton()}</div>);
+  }
+});
+
+var MyButton = React.createClass({
 
   clicked: function() {
     this.props.clickHandler();
   },
 
-// Maybe add color changing buttons later. - Icebox
-  // red: function() {
-  //   return {coloring: red};
-  // },
-
-  // green: function() {
-  //   return {coloring: green};
-  // },
-
-  // white: function() {
-  //   return {coloring: white};
-  // },
-
   render: function() {
     return(
       <div>
-      <button
-        onClick={this.clicked}
-        className="btn btn-floating waves-effect waves-light">
-        <i className="material-icons">create</i>
-      </button>
-    </div>
-      )
+        <button onClick={this.clicked}
+          className="btn btn-floating waves-effect waves-light">
+          <i className="material-icons">create</i>
+        </button>
+      </div>
+    );
   }
 });
 
@@ -38,17 +61,28 @@ var MyComponent = React.createClass({
   getInitialState: function() {
     return {
       showText: true,
-      colors: ["white", "red", "blue"]
+      colors: "whitetext"
     };
   },
 
   handleButtonClick: function() {
-    console.log("clicked!");
     if (this.state.showText==true) {
       this.setState({showText: false});
     } else {
       this.setState({showText: true});
     }
+  },
+
+  redClickHandler: function() {
+    this.setState({colors: "redtext"})
+  },
+
+  greenClickHandler: function() {
+    this.setState({colors: "greentext"})
+  },
+
+  whiteClickHandler: function() {
+    this.setState({colors: "whitetext"})
   },
 
   renderText: function() {
@@ -62,16 +96,17 @@ var MyComponent = React.createClass({
   render: function() {
     return(
       <div className='container'>
-        <MyButton clickHandler={this.handleButtonClick}>
-        </MyButton>
-
-        <p>{this.renderText()}</p>
+        <table><tr>
+          <td><MyButton clickHandler={this.handleButtonClick}></MyButton></td>
+          <td><ColorButton redClick={this.redClickHandler}>red</ColorButton></td>
+          <td><ColorButton whiteClick={this.whiteClickHandler}>white</ColorButton></td>
+          <td><ColorButton greenClick={this.greenClickHandler}>green</ColorButton></td>
+        </tr></table>
+        <p className={this.state.colors}>{this.renderText()}</p>
       </div>
     );
   }
 });
-
-
 
 React.render(<MyComponent text="I'm only borrowing your Humvee."></MyComponent>,
   document.getElementById('content')
