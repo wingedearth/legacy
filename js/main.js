@@ -108,7 +108,9 @@ var MyComponent = React.createClass({
   }
 });
 
-React.render(<MyComponent text="I'm only borrowing your Humvee."></MyComponent>,
+React.render(<MyComponent
+  text="Reading makes a full Man, Meditation a profound Man, Discourse a clear Man.">
+  </MyComponent>,
   document.getElementById('content')
 );
 
