@@ -2,9 +2,24 @@ body {
   background-color: dodgerblue;
 }
 
+.container {
+  margin: 0 auto 0 auto;
+  padding: 0 0 0 0;
+  width: 80%;
+}
+
+.nav-wrapper {
+  padding: 5px;
+}
+
+#logo-container {
+  padding-left: 20px;
+}
+
+
 /*Make your CSS responsive so the style of the button changes when
 the screen is less than 600px.*/
-@media only screen and (max-width: 500px) {
+@media only screen and (max-width: 600px) {
   button.btn {
     background-color: black;
   }
@@ -35,4 +50,14 @@ p.greentext {
   color: white;
   margin-top: 50px;
   font-size: 23px;
+}
+
+button {
+  display: inline;
+  margin: 0 10px 0 10px;
+}
+
+
+div {
+  display: inline-block;
 }

@@ -96,12 +96,12 @@ var MyComponent = React.createClass({
   render: function() {
     return(
       <div className='container'>
-        <table><tr>
-          <td><MyButton clickHandler={this.handleButtonClick}></MyButton></td>
-          <td><ColorButton redClick={this.redClickHandler}>red</ColorButton></td>
-          <td><ColorButton whiteClick={this.whiteClickHandler}>white</ColorButton></td>
-          <td><ColorButton greenClick={this.greenClickHandler}>green</ColorButton></td>
-        </tr></table>
+
+          <MyButton className="btn" clickHandler={this.handleButtonClick}></MyButton>
+          <ColorButton redClick={this.redClickHandler}>red</ColorButton>
+          <ColorButton whiteClick={this.whiteClickHandler}>white</ColorButton>
+          <ColorButton greenClick={this.greenClickHandler}>green</ColorButton>
+
         <p className={this.state.colors}>{this.renderText()}</p>
       </div>
     );
@@ -109,7 +109,7 @@ var MyComponent = React.createClass({
 });
 
 React.render(<MyComponent
-  text="Reading makes a full Man, Meditation a profound Man, Discourse a clear Man.">
+  text="'Reading makes a full Man, Meditation a profound Man, Discourse a clear Man.' - Benjamin Franklin">
   </MyComponent>,
   document.getElementById('content')
 );
